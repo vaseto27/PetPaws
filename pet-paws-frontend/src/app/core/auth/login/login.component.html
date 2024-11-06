@@ -1,0 +1,21 @@
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <p>
+      <mat-form-field>
+        <mat-label>Please fill in username</mat-label>
+        <input type="email" matInput formControlName="email" placeholder="Email">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Please fill in password</mat-label>
+        <input type="password" matInput placeholder="Password" formControlName="password">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </p>
+    <button mat-flat-button type="submit">Login</button>
+    </form>
+    <button (click)="gotoRegister()">Don't have an account ?</button>
+</div>
+

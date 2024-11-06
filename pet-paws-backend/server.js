@@ -1,26 +1,29 @@
-// Import the express module
+const http = require('http');
 const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const connectDB = require('./db')
 
-// Create an instance of express
 const app = express();
 
-// Define a port
-const PORT = process.env.PORT || 3000;
+connectDB();
 
-// Create a basic route
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
+const authRoutes = require('./routes/auth');
+
+app.use(cors({
+  origin: 'http://localhost:4200',
+}))
+app.use(bodyParser.json());
+
+const PORT = 3000;
+
+app.use('/api/auth', authRoutes);
+
+app.use((req, res, next) => {
+  // Page not found 
+  res.status(404).send('<h1>Page not found</h1>');
 });
 
-app.get('/about', (req, res) => {
-    res.send('About Us Page');
-  });
-  
-  app.get('/contact', (req, res) => {
-    res.send('Contact Page');
-  });
+const server = http.createServer(app);
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+server.listen(PORT);
