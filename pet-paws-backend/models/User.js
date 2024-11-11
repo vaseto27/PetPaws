@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    pets: [{type: mongoose.Schema.Types.ObjectId, ref: 'Pet'}],
     refreshToken: String
 })
 

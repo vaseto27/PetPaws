@@ -9,6 +9,7 @@ const app = express();
 connectDB();
 
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 
 app.use(cors({
   origin: 'http://localhost:4200',
@@ -18,6 +19,7 @@ app.use(bodyParser.json());
 const PORT = 3000;
 
 app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes)
 
 app.use((req, res, next) => {
   // Page not found 

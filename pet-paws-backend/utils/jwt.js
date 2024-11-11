@@ -11,4 +11,4 @@ const generateRefreshToken = (user) => {
     return jwt.sign({userId: user._id}, REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
 }
 
-module.exports = {generateAccessToken, generateRefreshToken, REFRESH_TOKEN_SECRET}
+module.exports = {generateAccessToken, generateRefreshToken, REFRESH_TOKEN_SECRET, ACESS_TOKEN_SECRET}
