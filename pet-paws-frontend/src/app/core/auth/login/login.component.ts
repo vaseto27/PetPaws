@@ -29,6 +29,7 @@ export class LoginComponent {
   login() {
     this.authService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).subscribe({
       next: () => {
+        console.log('navigating to home')
         this.router.navigate(['/home'])
       },
       error: (err) => console.error(err)

@@ -19,12 +19,13 @@ app.use(bodyParser.json());
 const PORT = 3000;
 
 app.use('/api/auth', authRoutes);
+console.log('setting userRoutes')
 app.use('/api/users', userRoutes)
 
-app.use((req, res, next) => {
-  // Page not found 
-  res.status(404).send('<h1>Page not found</h1>');
-});
+// app.use((req, res, next) => {
+//   // Page not found 
+//   res.status(404).send('<h1>Page not found</h1>');
+// });
 
 const server = http.createServer(app);
 
